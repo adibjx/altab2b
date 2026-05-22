@@ -4,6 +4,7 @@ dist
 *.local
 .DS_Store
 .claude/
+*.zip
 
 # Internal strategy briefs — kept out of the public repo
 ALTA_Brand_Brief.md
