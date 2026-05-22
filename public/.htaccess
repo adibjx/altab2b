@@ -7,6 +7,21 @@
   RewriteRule . /index.html [L]
 </IfModule>
 
+# Desliga o cache de página do LiteSpeed (serve sempre o HTML atual).
+# Os assets têm hash no nome, então o cache de navegador deles continua ok.
+<IfModule LiteSpeed>
+  CacheLookup off
+</IfModule>
+
+# index.html nunca é cacheado pelo navegador (deploys aparecem na hora)
+<IfModule mod_headers.c>
+  <FilesMatch "index\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>
+
 # Cache static assets
 <IfModule mod_expires.c>
   ExpiresActive On
