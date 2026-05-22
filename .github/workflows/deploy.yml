@@ -39,3 +39,6 @@ jobs:
           # Raiz pública na Hostinger. Se seu usuário FTP já cair dentro
           # de public_html, troque para ./
           server-dir: ./public_html/
+          # FTP da Hostinger não sobrescreve arquivos de mesmo nome;
+          # limpamos o destino antes de subir para garantir HTML/.htaccess novos.
+          dangerous-clean-slate: true
