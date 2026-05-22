@@ -10,7 +10,7 @@
 }
 
 .scrolled {
-  background: rgba(24, 24, 26, 0.72);
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom-color: var(--border);
@@ -33,9 +33,13 @@
 }
 
 .logo {
-  height: 32px;
+  height: 30px;
   width: auto;
   object-fit: contain;
+  background: var(--ink);
+  padding: 7px;
+  border-radius: 8px;
+  box-sizing: content-box;
 }
 
 .wordmark {
@@ -49,7 +53,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  background: rgba(30, 30, 34, 0.6);
+  background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 6px;

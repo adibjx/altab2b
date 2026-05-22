@@ -1,25 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  /* Warm near-black surfaces */
-  --bg: #131210;
-  --bg-elev: #1a1815;
-  --bg-elev-2: #211e19;
-  --text: #f4efe4;
-  --text-muted: #a39d8f;
-  --text-dim: #6f695d;
-  --accent: #ff3b2f;
-  --accent-soft: rgba(255, 59, 47, 0.12);
-  --accent-glow: rgba(255, 59, 47, 0.35);
-  --border: #2c2823;
-  --border-strong: #3e3933;
+  /* Light surfaces — clean B2B */
+  --bg: #ffffff;
+  --bg-elev: #f6f6f3;
+  --bg-elev-2: #eeeeea;
+  --text: #15171c;
+  --text-muted: #565b64;
+  --text-dim: #8a8e96;
 
-  /* Light "paper" surfaces — editorial contrast */
-  --paper: #ece4d4;
-  --paper-2: #e3d9c4;
-  --paper-ink: #14120e;
-  --paper-muted: #5c5547;
-  --paper-border: #cfc4ac;
+  /* Sober neutral "accent" — icons, labels, hairline emphasis (NOT red) */
+  --accent: #2b2f36;
+  --accent-soft: rgba(21, 23, 28, 0.05);
+  --accent-glow: rgba(21, 23, 28, 0.06);
+  --border: #e6e5e0;
+  --border-strong: #d3d2cb;
+
+  /* Red — reserved for calls to action only */
+  --cta: #e5392c;
+  --cta-hover: #cf3024;
+
+  /* Dark "ink" panels — inverted moments (CTA blocks, footer) */
+  --ink: #14161b;
+  --ink-elev: #1d2027;
+  --ink-border: #2b2f37;
+  --on-ink: #f3f3f1;
+  --on-ink-muted: #a7abb2;
+  --on-ink-dim: #74787f;
 
   /* Type system */
   --font-display: 'Bricolage Grotesque', Georgia, serif;
@@ -65,15 +72,15 @@ body {
   overflow-x: hidden;
 }
 
-/* Film grain — analog texture over the whole site */
+/* Film grain — subtle paper texture over the whole site */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 300;
   pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
+  opacity: 0.025;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -132,7 +139,7 @@ p {
   color: var(--text-dim);
 }
 
-.mono-label--accent { color: var(--accent); }
+.mono-label--accent { color: var(--cta); }
 
 /* ----- Layout ----- */
 .container {
@@ -173,14 +180,13 @@ p {
 }
 
 .btn--primary {
-  background: var(--accent);
-  color: var(--text);
-  box-shadow: 0 0 0 0 var(--accent-glow);
+  background: var(--cta);
+  color: #fff;
 }
 
 .btn--primary:hover {
-  background: #ff4747;
-  box-shadow: 0 0 32px -4px var(--accent-glow);
+  background: var(--cta-hover);
+  box-shadow: 0 10px 24px -10px rgba(229, 57, 44, 0.5);
   transform: translateY(-1px);
 }
 
@@ -193,6 +199,18 @@ p {
 .btn--ghost:hover {
   background: var(--bg-elev);
   border-color: var(--text-muted);
+}
+
+/* Ghost button on dark ink panels */
+.btn--on-ink {
+  background: transparent;
+  color: var(--on-ink);
+  border-color: var(--ink-border);
+}
+
+.btn--on-ink:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--on-ink-muted);
 }
 
 .btn--large {

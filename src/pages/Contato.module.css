@@ -8,10 +8,10 @@
   color: var(--accent);
 }
 
-/* ===== Main CTA ===== */
+/* ===== Main CTA (dark ink panel) ===== */
 .mainCta {
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
+  background: var(--ink);
+  color: var(--on-ink);
   border-radius: var(--radius-xl);
   padding: clamp(48px, 6vw, 96px);
   position: relative;
@@ -20,13 +20,14 @@
 
 .mainGlow {
   position: absolute;
-  top: -30%;
-  right: -10%;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
-  filter: blur(120px);
-  opacity: 0.35;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--ink-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ink-border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 85% 30%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 85% 30%, black 0%, transparent 70%);
+  opacity: 0.5;
   pointer-events: none;
 }
 
@@ -40,12 +41,15 @@
   gap: 24px;
 }
 
+.mainCta h2 { color: var(--on-ink); }
+.mainCta :global(.accent-text) { color: var(--cta); }
+
 .mainIcon {
   width: 64px;
   height: 64px;
   border-radius: 16px;
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--on-ink);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +57,7 @@
 
 .mainText {
   font-size: clamp(17px, 1.4vw, 20px);
-  color: var(--text-muted);
+  color: var(--on-ink-muted);
   line-height: 1.6;
 }
 
@@ -61,7 +65,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--text-dim);
+  color: var(--on-ink-dim);
   font-size: 14px;
 }
 

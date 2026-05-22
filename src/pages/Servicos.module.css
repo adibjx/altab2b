@@ -26,7 +26,7 @@
   right: -5%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(255, 59, 47, 0.08) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(70, 90, 120, 0.08) 0%, transparent 60%);
   filter: blur(80px);
   pointer-events: none;
   z-index: 0;
@@ -80,8 +80,8 @@
 }
 
 .row:hover .rowIcon {
-  background: var(--accent);
-  color: var(--text);
+  background: var(--ink);
+  color: var(--on-ink);
 }
 
 .rowBody {
@@ -154,11 +154,10 @@
   .row:hover { padding-left: 8px; }
 }
 
-/* ===== Final CTA (paper) ===== */
+/* ===== Final CTA (dark ink panel) ===== */
 .finalCta {
-  background: var(--paper);
-  color: var(--paper-ink);
-  border: 1px solid var(--paper-border);
+  background: var(--ink);
+  color: var(--on-ink);
   border-radius: var(--radius-xl);
   padding: clamp(40px, 5vw, 76px);
   display: flex;
@@ -172,20 +171,24 @@
 .finalCta::before {
   content: '';
   position: absolute;
-  inset: 16px;
-  border: 1px solid var(--paper-border);
-  border-radius: calc(var(--radius-xl) - 8px);
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--ink-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ink-border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 85% 40%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 85% 40%, black 0%, transparent 70%);
+  opacity: 0.5;
   pointer-events: none;
-  opacity: 0.7;
 }
 
 .finalCta > * { position: relative; z-index: 1; }
 
-.finalCta h2 { color: var(--paper-ink); max-width: 680px; }
+.finalCta h2 { color: var(--on-ink); max-width: 680px; }
 
 .finalText {
   font-size: 16px;
   line-height: 1.6;
-  color: var(--paper-muted);
+  color: var(--on-ink-muted);
   max-width: 560px;
 }

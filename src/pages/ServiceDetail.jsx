@@ -69,7 +69,7 @@ export default function ServiceDetail() {
         <div className="container">
           <div className={styles.twoCol}>
             <Reveal className={styles.colLabel}>
-              <span className="mono-label mono-label--accent">{service.problem.heading}</span>
+              <span className="mono-label">{service.problem.heading}</span>
             </Reveal>
             <div className={styles.colBody}>
               {service.problem.paragraphs.map((p, i) => (
