@@ -36,9 +36,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           # Conteúdo compilado (inclui .htaccess)
           local-dir: ./dist/
-          # Raiz pública na Hostinger. Se seu usuário FTP já cair dentro
-          # de public_html, troque para ./
-          server-dir: ./public_html/
-          # FTP da Hostinger não sobrescreve arquivos de mesmo nome;
-          # limpamos o destino antes de subir para garantir HTML/.htaccess novos.
+          # O usuário FTP é "preso" (chroot) na própria public_html,
+          # então publicamos na raiz onde ele cai.
+          server-dir: ./
+          # Limpa o destino antes de subir para garantir HTML/.htaccess novos.
           dangerous-clean-slate: true
