@@ -1,0 +1,10 @@
+node_modules
+dist
+.vite
+*.local
+.DS_Store
+.claude/
+
+# Internal strategy briefs — kept out of the public repo
+ALTA_Brand_Brief.md
+ALTA_Site_Institucional_Brief.md

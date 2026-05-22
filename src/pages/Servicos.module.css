@@ -1,0 +1,191 @@
+/* Subtle hero background */
+.pageHero {
+  position: relative;
+  overflow: hidden;
+}
+
+.pageHero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: clamp(80px, 9vw, 130px) clamp(80px, 9vw, 130px);
+  mask-image: linear-gradient(120deg, black 0%, transparent 62%);
+  -webkit-mask-image: linear-gradient(120deg, black 0%, transparent 62%);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pageHero::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 59, 47, 0.08) 0%, transparent 60%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pageHero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Service index list ===== */
+.list {
+  border-top: 1px solid var(--border);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: clamp(20px, 3vw, 44px);
+  padding: clamp(28px, 3.5vw, 44px) 8px;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition), padding-left var(--transition);
+}
+
+.row:hover {
+  background: var(--bg-elev);
+  padding-left: 24px;
+}
+
+.rowIndex {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  align-self: start;
+  padding-top: 6px;
+}
+
+.rowIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--transition);
+}
+
+.row:hover .rowIcon {
+  background: var(--accent);
+  color: var(--text);
+}
+
+.rowBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 720px;
+}
+
+.rowTitle {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.freeTag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.rowText {
+  font-size: clamp(15px, 1.3vw, 17px);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.rowArrow {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+
+.row:hover .rowArrow {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 720px) {
+  .row {
+    grid-template-columns: auto 1fr;
+    gap: 16px 18px;
+  }
+  .rowIndex { grid-row: 1; grid-column: 1; padding-top: 0; }
+  .rowIcon { grid-row: 1; grid-column: 2; justify-self: start; width: 52px; height: 52px; }
+  .rowBody { grid-row: 2; grid-column: 1 / -1; }
+  .rowArrow { display: none; }
+  .row:hover { padding-left: 8px; }
+}
+
+/* ===== Final CTA (paper) ===== */
+.finalCta {
+  background: var(--paper);
+  color: var(--paper-ink);
+  border: 1px solid var(--paper-border);
+  border-radius: var(--radius-xl);
+  padding: clamp(40px, 5vw, 76px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.finalCta::before {
+  content: '';
+  position: absolute;
+  inset: 16px;
+  border: 1px solid var(--paper-border);
+  border-radius: calc(var(--radius-xl) - 8px);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.finalCta > * { position: relative; z-index: 1; }
+
+.finalCta h2 { color: var(--paper-ink); max-width: 680px; }
+
+.finalText {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--paper-muted);
+  max-width: 560px;
+}
