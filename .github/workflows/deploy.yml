@@ -36,5 +36,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           # Conteúdo compilado (inclui .htaccess)
           local-dir: ./dist/
-          # Conta FTP principal cai na home; o docroot é a public_html.
-          server-dir: ./public_html/
+          # A conta FTP já cai dentro da public_html (docroot), então
+          # publicamos direto na raiz onde ela conecta.
+          server-dir: ./
