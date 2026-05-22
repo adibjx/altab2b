@@ -36,8 +36,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           # Conteúdo compilado (inclui .htaccess)
           local-dir: ./dist/
-          # O usuário FTP é "preso" (chroot) na própria public_html,
-          # então publicamos na raiz onde ele cai.
-          server-dir: ./
-          # Limpa o destino antes de subir para garantir HTML/.htaccess novos.
-          dangerous-clean-slate: true
+          # Conta FTP principal cai na home; o docroot é a public_html.
+          server-dir: ./public_html/
