@@ -28,22 +28,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Diagnose FTP layout
-        run: |
-          sudo apt-get update -y >/dev/null 2>&1 || true
-          sudo apt-get install -y lftp >/dev/null 2>&1 || true
-          lftp -u "${{ secrets.FTP_USERNAME }}","${{ secrets.FTP_PASSWORD }}" "${{ secrets.FTP_SERVER }}" <<'EOF'
-          set ssl:verify-certificate no
-          set ftp:ssl-allow no
-          echo "===== PWD (onde a conta cai) ====="
-          pwd
-          echo "===== LS raiz ====="
-          cls -l
-          echo "===== ARVORE (find) ====="
-          find
-          bye
-          EOF
-
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
